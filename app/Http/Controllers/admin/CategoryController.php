@@ -51,7 +51,7 @@ class CategoryController extends Controller
         if ($request->hasFile('thumbnail')) {
             $image = $request->file('thumbnail');
             $image_extension = Str::slug($request->title) . '.' . 'webp';
-            $url = public_path('category/thumbnail/' . $image_extension);
+            $url = public_path('categories/thumbnail/' . $image_extension);
             Image::make($image)->save($url, 100);
             $Category->thumbnail = $image_extension;
         }
@@ -108,14 +108,14 @@ class CategoryController extends Controller
 
         if ($request->hasFile('thumbnail')) {
 
-            $old_thumbnail = public_path('categroy/thumbnail/' . $category->thumbnail);
+            $old_thumbnail = public_path('categories/thumbnail/' . $category->thumbnail);
             if (file_exists($old_thumbnail)) {
                 unlink($old_thumbnail);
             }
 
             $image = $request->file('thumbnail');
             $image_extension = Str::slug($request->title) . '.' . 'webp';
-            $url = public_path('category/thumbnail/' . $image_extension);
+            $url = public_path('categories/thumbnail/' . $image_extension);
             Image::make($image)->save($url, 100);
             $category->thumbnail = $image_extension;
         }
@@ -135,7 +135,7 @@ class CategoryController extends Controller
             return back()->with('warning', "Can't delete.There's a Blog in this category related");
         }
 
-        $old_thumbnail = public_path('categroy/thumbnail/' . $category->thumbnail);
+        $old_thumbnail = public_path('categories/thumbnail/' . $category->thumbnail);
         if (file_exists($old_thumbnail)) {
             unlink($old_thumbnail);
         }

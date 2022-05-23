@@ -20,7 +20,7 @@ class CreateBlogsTable extends Migration
             $table->text('meta_keyword');
             $table->string('slug');
             $table->string('category_id');
-            $table->string('views')->default('1')->comment('visitors views');
+            $table->integer('views')->default('1')->comment('visitors views');
             $table->string('thumbnail');
             $table->text('description');
             $table->timestamps();

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class, 'FrontendHome'])->name('FrontendHome');
 Route::get('/post', [FrontendController::class, 'FrontendPostAll'])->name('FrontendPostAll');
 Route::get('/post/{ActivePost:slug}', [FrontendController::class, 'FrontendPostView'])->name('FrontendPostView');
+Route::get('/category', [FrontendController::class, 'FrontendAllCategory'])->name('FrontendAllCategory');
+Route::get('/category/{Category:slug}', [FrontendController::class, 'FrontendCategoryWisePost'])->name('FrontendCategoryWisePost');
 
 
 // backend route

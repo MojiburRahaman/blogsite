@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 use App\Models\Blog;
+use App\Models\Category;
+
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -46,7 +48,10 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api.php'));
         });
         Route::bind('ActivePost', function ($value) {
-            return Blog::where('slug', $value)->where('active',1)->firstOrFail();
+            return Blog::where('slug', $value)->where('active',1)->with('Category:id,slug,title') ->firstOrFail();
+        });
+        Route::bind('Category', function ($value) {
+            return Category::where('slug', $value)->where('active',1)->select('id','title','slug')->firstOrFail();
         });
     }
 
