@@ -9,21 +9,38 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- ==== Document Title ==== -->
-        <title>BloggyPress - Responsive Personal Blog HTML5 Template</title>
+        <title>@yield('title',$setting->meta_title) </title>
 
         <!-- ==== Document Meta ==== -->
-        <meta name="description" content="BloggyPress - Responsive Personal Blog HTML5 Template">
+        <meta name="title" content="@yield('title',$setting->meta_title) ">
+        <meta name="twitter:card" content="@yield('title',$setting->meta_title)">
+        <meta property="og:url" content="{{url()->current()}}" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="@yield('title',$setting->meta_title)" />
+        <meta name="description" content="@yield('meta_description',$setting->meta_description)">
+        <meta name=”twitter:description” content="@yield('meta_description',$setting->meta_description)" />
         <meta name="keywords"
-            content="blog, blogging, personal, clean, modern, masonry, simple, html5, css3, template, responsive">
+            content="@yield('meta_keyword',$setting->meta_keyword)">
         <meta name="author" content="ThemeLooks">
+        @yield('social_thumbnail')
+        <meta property="og:image:height" content="640" />
+        <meta property="og:image:height" content="640" />
+        <meta property="og:type" content="article" />
+        <meta property="article:publisher" content="https://mojiburrahaman.com/" />
+        
+      
 
         <!-- ==== Favicon ==== -->
-        <link rel="icon" href="favicon.png" type="image/png">
+        <link rel="icon" href="{{asset('android-chrome-192x192.png')}}" type="image/png">
+        {{-- <link rel="icon" href="{{asset('blog_logo.png')}}" type="image/png"> --}}
 
         <!-- ==== Google Font ==== -->
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700%7CPlayfair+Display:400,700">
-
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Parisienne&display=swap" rel="stylesheet">
         <!-- ==== Font Awesome ==== -->
         <link rel="stylesheet" href="{{asset('highlight/monokai-sublime.min.css')}}" defer>
         <link rel="stylesheet" href="{{asset('front/css/font-awesome.min.css')}}">
@@ -43,26 +60,12 @@
         <!-- ==== Responsive Stylesheet ==== -->
         <link rel="stylesheet" href="{{asset('front/css/responsive-style.css')}}">
 
-        <!-- ==== Color Scheme Stylesheet ==== -->
-        <link rel="stylesheet" href="{asset('front/css/colors/color-1.css')}" id="changeColorScheme">
 
         <!-- ==== Custom Stylesheet ==== -->
         <link rel="stylesheet" href="{{asset('front/css/custom.css')}}">
-
-        <!-- ==== HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries ==== -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
     </head>
 
     <body>
-
-        <!-- Preloader Start -->
-        <!-- <div id="preloader" class="bg-primary">
-        <div class="preloader--inner"></div>
-    </div> -->
-        <!-- Preloader End -->
 
         <!-- Wrapper Start -->
         <div class="wrapper">
@@ -74,15 +77,18 @@
                         <!-- Header Date Start -->
                         <div class="header--date">
                             <p>{{now()->format('D')}} <span class="text-primary">{{now()->format('d M ')}}</span>
-                                {{now()->format('Y')}}</p>
+                                {{now()->format('Y')}}
+                            </p>
                         </div>
                         <!-- Header Date End -->
 
                         <!-- Header Search Bar Start -->
                         <div class="header--search-bar">
-                            <form action="#" data-form="validate">
-                                <input type="search" name="search" placeholder="Search..." class="form-control"
-                                    required>
+                            <form action="{{route('FrontendSearch')}}" data-form="validate">
+                                <input type="search" name="keyword" placeholder="Search..." class="form-control"
+                                    @if(url()->current() == route('FrontendSearch'))
+                                value="{{session('keyword')}}"
+                                @endif >
 
                                 <button type="submit" class="btn-link"><i class="fa fa-search"></i></button>
                             </form>
@@ -94,10 +100,11 @@
                             <span>Follow Me:</span>
 
                             <ul class="nav">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                <li><a target="_blank" href="https://www.facebook.com/mojibur.rahaman736/"><i
+                                            class="fa fa-facebook"></i></a></li>
+                                <li><a target="_blank" href="https://github.com/MojiburRahaman"><i class="fa fa-github"></i></a></li>
+                                <li><a target="_blank" href="https://www.linkedin.com/in/mojibur-rahaman"><i
+                                            class="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
                         <!-- Header Social End -->
@@ -110,8 +117,9 @@
                     <div class="container">
                         <!-- Header Logo Start -->
                         <div class="header--logo">
-                            <a href="index.html">
-                                <img src="{asset{'front/img/logo.png'}}" alt="">
+                            <a href="{{route('FrontendHome')}}">
+                                <h1>MR</h1>
+                                <p>A personal blog website</p>
                             </a>
                         </div>
                         <!-- Header Logo End -->
@@ -129,36 +137,13 @@
                         <div id="headerNav" class="navbar-collapse collapse text-center">
                             <!-- Header nav Links Start -->
                             <ul class="header--nav-links nav">
-                                {{-- <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home<i class="fa fa-caret-down"></i></a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="index.html">Home Version 1</a></li>
-                                    <li><a href="index-2.html">Home Version 2</a></li>
-                                    <li class="active"><a href="index-3.html">Home Version 3</a></li>
-                                </ul>
-                            </li> --}}
                                 <li class="{{ (url()->current()===route('FrontendHome')) ? 'active' : '' }}"><a
                                         href="{{route('FrontendHome')}}">Home</a></li>
                                 <li class="{{ (url()->current()===route('FrontendPostAll')) ? 'active' : '' }}"> <a
                                         href="{{route('FrontendPostAll')}}">Post</a></li>
                                 <li class="{{ (url()->current()===route('FrontendAllCategory')) ? 'active' : '' }}"> <a
                                         href="{{route('FrontendAllCategory')}}">Category</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages<i
-                                            class="fa fa-caret-down"></i></a>
-
-                                    <ul class="dropdown-menu">
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                        <li><a href="blog-details-right.html">Blog Details Right</a></li>
-                                        <li><a href="blog-details-left.html">Blog Details Left</a></li>
-                                        <li><a href="author.html">Author</a></li>
-                                        <li><a href="category.html">Category</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="#">Purchase</a></li>
-                                <li><a href="404.html">404</a></li>
+                                <li><a target="_blank" href="https://mojiburrahaman.com/#contact">Contact</a></li>
                             </ul>
                             <!-- Header nav Links End -->
                         </div>
@@ -179,18 +164,18 @@
                     <div class="container">
                         <!-- Back To Top Button Start -->
                         <div class="back-to-top-btn">
-                            <a href="#">Back To Top<i class="fa fa-chevron-up"></i></a>
+                            <a href="">Back To Top<i class="fa fa-chevron-up"></i></a>
                         </div>
                         <!-- Back To Top Button End -->
 
                         <!-- Social Start -->
                         <div class="social">
                             <ul class="nav">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.facebook.com/mojibur.rahaman736/"><i
+                                            class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://github.com/MojiburRahaman"><i class="fa fa-github"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/mojibur-rahaman "><i
+                                            class="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
                         <!-- Social End -->
@@ -201,7 +186,8 @@
                 <!-- Footer Copyright Start -->
                 <div class="footer--copyright text-center">
                     <div class="container">
-                        <p>Copyright &copy; <a href="#">ThemeBlogs</a>. All Rights Reserved.</p>
+                        <p>Copyright &copy; <a href="{{route('FrontendHome')}}">{{config('app.name')}}</a>. All Rights
+                            Reserved.</p>
                     </div>
                 </div>
                 <!-- Footer Copyright End -->
@@ -223,10 +209,10 @@
         <script src="{{asset('front/js/jquery.magnific-popup.min.js')}}"></script>
 
         <!-- ==== Validation Plugin ==== -->
-        <script src="{{asset('front/js/jquery.validate.min.js"')}}></script>
+        <script src="{{asset('front/js/jquery.validate.min.js')}}"></script>
 
-    <!-- ==== Match Height Plugin ==== -->
-    <script src="{{asset(' front/js/jquery.matchHeight-min.js')}}"></script>
+        <!-- ==== Match Height Plugin ==== -->
+        <script src="{{asset(' front/js/jquery.matchHeight-min.js')}}"></script>
 
         <!-- ==== Isotope Plugin ==== -->
         <script src="{{asset('front/js/isotope.min.js')}}"></script>
@@ -239,11 +225,11 @@
 
         <!-- ==== Main Script ==== -->
         <script src="{{asset('front/js/main.js')}}"></script>
+        <script src="{{asset('highlight/highlight.min.js')}}"></script>
 
-        <!-- ==== Color Switcher Script ==== -->
-        <script src="{{asset('front/js/color-switcher.min.js')}}"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @yield('script_js')
-        
+
 
     </body>
 

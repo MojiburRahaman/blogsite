@@ -52,10 +52,10 @@
         background-color: rgba(0, 0, 0, .03);
         border-bottom: 1px solid rgba(0, 0, 0, .125);
     }
-
+/* 
     .sidebar {
         border: 1px solid #f2f2f2;
-    }
+    } */
 
     .test {
         border-bottom: .5px solid wheat;

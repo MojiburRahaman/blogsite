@@ -1,7 +1,6 @@
 @extends('frontend.master')
-@section('title')
-Post
-@endsection
+@section('title') 
+Search Result for "{{session('keyword')}}" {{config('app.name')}} @endsection
 @section('content')
 <!-- Blog Section Start -->
 <section class="section post_all">
@@ -9,7 +8,7 @@ Post
         <div class="row">
             <div class="col-md-8 ">
                 <!-- Post Item Start -->
-                @foreach ($posts as $post)
+                @forelse ($blogs as $post)
 
                 <article class="blog-card">
                     <a href="{{route('FrontendPostView',$post->slug)}}">
@@ -50,10 +49,14 @@ Post
                         </div>
                     </div>
                 </article>
-                @endforeach
+                @empty
+<article>
+    No result found
+</article>
+                @endforelse
 
                 <div class="mt-2">
-                    {{$posts->links('frontend.paginator')}}
+                    {{$blogs->links('frontend.paginator')}}
                 </div>
                 <!-- Post Footer End -->
 

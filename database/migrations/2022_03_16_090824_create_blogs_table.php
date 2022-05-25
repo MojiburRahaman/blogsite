@@ -21,6 +21,7 @@ class CreateBlogsTable extends Migration
             $table->string('slug');
             $table->string('category_id');
             $table->integer('views')->default('1')->comment('visitors views');
+            $table->integer('active')->default('1')->comment('1= active,2=inactive');
             $table->string('thumbnail');
             $table->text('description');
             $table->timestamps();

@@ -1,19 +1,14 @@
 @extends('frontend.master')
-
+@section('social_thumbnail')
+<meta property="og:image" content="{{ asset('logo/'.$setting->logo) }}" />
+<meta property="og:image:url" content="{{ asset('logo/'.$setting->logo) }}" />
+<meta property="og:image:secure_url" content="{{ asset('logo/'.$setting->logo) }}" />
+<meta name=”twitter:image” content="{{ asset('logo/'.$setting->logo) }}" />
+<meta property="og:image:alt" content="{{$setting->meta_title}}" />
+@endsection
 @section('content')
-<style>
-    .blog_content {
-        padding: 5px;
-        /* -webkit-box-shadow: 0px 4px 7px 5px rgba(0,0,0,0.38); */
-        /* box-shadow: 0px 4px 7px 5px rgba(0,0,0,0.38); */
-        /* background: white; */
-        background-color: rgba(0, 0, 0, .03);
-        border: 1px solid rgba(0, 0, 0, .125);
-    }
-
-</style>
 <!-- Blog Section Start -->
-<section class="section">
+<section class="section post_all">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -24,7 +19,7 @@
                         <div class="post--item   text-center">
                             <!-- Post Slider Start -->
                             <div class="post--img">
-                                <a href="{{route('FrontendPostView',$blog->slug )}}"><img style="height: 100%"
+                                <a href="{{route('FrontendPostView',$blog->slug )}}"><img
                                         src="{{asset('projects/'.$blog->thumbnail)}}" alt=""></a>
                             </div>
                             <!-- Post Slider End -->
@@ -33,8 +28,8 @@
                             <div class="blog_content">
 
                                 <div class="post--cat">
-                                    <a href="#" data-overlay="0.5"
-                                        data-overlay-color="primary">{{$blog->Category->title}}</a>
+                                    <a href="{{route('FrontendCategoryWisePost',$blog->Category->slug)}}"
+                                        data-overlay="0.5" data-overlay-color="primary">{{$blog->Category->title}}</a>
                                 </div>
                                 <!-- Post Category End -->
 
@@ -62,17 +57,13 @@
                                     <p class="float--left">
                                         <i class="fa fa-clock-o text-primary"></i>
                                         <span>{{$blog->created_at->format('d M Y')}}</span>
-                                        <span>by <a href="#"> John Doe</a></span>
-                                    </p>
-
-                                    <p class="float--right">
-                                        <i class="fa fa-heart-o text-primary"></i>
-                                        <span>112</span>
+                                        <span>by <a href="https://mojiburrahaman.com/" target="_blank"
+                                                title="Mojibur Rahaman"> Mojibur Rahaman</a></span>
                                     </p>
 
                                     <p class="float--right">
                                         <i class="fa fa-eye text-primary"></i>
-                                        <span>{{$blog->views}}</span>
+                                        <span>{{$blog->views}}&nbsp;views</span>
                                     </p>
                                 </div>
                             </div>
@@ -88,7 +79,7 @@
             <div class="row" data-trigger="fitrow">
                 @foreach ($blogs as $blog)
                 @if ($loop->index+1 > 2)
-                <div class="col-sm-6 col-6 col-xs-12 pb--60">
+                <div class="col-sm-6 col-xs-12 pb--60">
                     <!-- Post Item Start -->
                     <div class="post--item   text-center">
                         <!-- Post Image Start -->
@@ -102,7 +93,7 @@
                         <div class="blog_content">
 
                             <div class="post--cat">
-                                <a href="#" data-overlay="0.5"
+                                <a href="{{route('FrontendCategoryWisePost',$blog->Category->slug)}}" data-overlay="0.5"
                                     data-overlay-color="primary">{{$blog->Category->title}}</a>
                             </div>
                             <!-- Post Category End -->
@@ -122,7 +113,8 @@
 
                             <!-- Post Action Start -->
                             <div class="post--action">
-                                <a href="blog-details.html" class="btn btn-default">Read More</a>
+                                <a href="{{route('FrontendPostView',$blog->slug )}}" class="btn btn-default">Read
+                                    More</a>
                             </div>
                             <!-- Post Action End -->
 
@@ -131,17 +123,13 @@
                                 <p class="float--left">
                                     <i class="fa fa-clock-o text-primary"></i>
                                     <span>{{$blog->created_at->format('d M Y')}}</span>
-                                    <span>by <a href="#"> John Doe</a></span>
-                                </p>
-
-                                <p class="float--right">
-                                    <i class="fa fa-heart-o text-primary"></i>
-                                    <span>112</span>
+                                    <span>by <a href="https://mojiburrahaman.com/" target="_blank"
+                                            title="Mojibur Rahaman"> Mojibur Rahaman</a></span>
                                 </p>
 
                                 <p class="float--right">
                                     <i class="fa fa-eye text-primary"></i>
-                                    <span>{{$blog->views}}</span>
+                                    <span>{{$blog->views}}&nbsp;views</span>
                                 </p>
                             </div>
                         </div>
@@ -164,52 +152,32 @@
                 <div class="about--widget pb--3 text-center">
                     <div class="img">
                         <a href="about.html">
-                            <img src="img/widgets-img/about-avatar.jpg" alt="" class="img-circle">
+                            <img src="{{asset('Screenshot_২০২২০৩১৭_১৫৩৭২৩.png')}}" alt="" class="img-circle">
                         </a>
                     </div>
 
                     <div class="info">
-                        <h3 class="name h5 text-primary"><a href="about.html" class="btn-link">Karen Rosalie</a></h3>
+                        <h3 class="name h5 text-primary"><a href="about.html" class="btn-link">Mojibur Rahaman</a></h3>
 
-                        <p class="role">Photographer &amp; Blogger</p>
+                        <p class="role">Full Stack Web Developer</p>
                     </div>
-
-                    <div class="social">
+                    <br>
+                    <div class="social--widget pb--5 text-center">
                         <ul class="nav">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a target="_blank" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a target="_blank" href="#"><i class="fa fa-github"></i></a></li>
+                            <li><a target="_blank" href="#"><i class="fa fa-linkedin"></i></a></li>
                         </ul>
                     </div>
 
                     <div class="bio">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi veritatis sapiente emit
-                            poribus...</p>
+                        <p>I'm a full-stack web developer, proficient at building responsive web applications, mostly
+                            experienced in php and Laravel framework . .</p>
 
-                        <p><a href="about.html">Read More</a></p>
+                        <p><a target="_blank" href="https://mojiburrahaman.com/#contact">Contact Me</a></p>
                     </div>
                 </div>
                 <!-- About Widget End -->
-            </div>
-            <!-- Widget End -->
-
-            <!-- Widget Start -->
-            <div class="widget">
-                <h2 class="h4 widget--title">My Socials</h2>
-
-                <!-- Social Widget Start -->
-                <div class="social--widget pb--5 text-center">
-                    <ul class="nav">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    </ul>
-                </div>
-                <!-- Social Widget End -->
             </div>
             <!-- Widget End -->
 
@@ -219,13 +187,10 @@
 
                 <!-- Newsletter Widget Start -->
                 <div class="newsletter--widget pb--10 text-center">
-                    <form
-                        action="https://themelooks.us13.list-manage.com/subscribe/post?u=79f0b132ec25ee223bb41835f&amp;id=f4e0e93d1d"
-                        method="post" name="mc-embedded-subscribe-form" target="_blank" data-form="validate">
-                        <p class="fs--14">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <form id="contact-form" name="mc-embedded-subscribe-form" target="_blank">
 
-                        <input type="email" name="EMAIL" placeholder="Your E-mail" class="form-control"
-                            autocomplete="off" required>
+                        <input type="email" name="EMAIL" placeholder="Your E-mail" class="form-control" id="email"
+                            value="{{old('EMAIL')}}" autocomplete="off" required>
 
                         <button type="submit" class="btn btn-default">Subscribe Now</button>
                     </form>
@@ -233,243 +198,44 @@
                 <!-- Newsletter Widget End -->
             </div>
             <!-- Widget End -->
-
-            <!-- Widget Start -->
-            <div class="widget">
-                <h2 class="h4 widget--title">Editor's Picks</h2>
-
-                <!-- Post Widget Start -->
-                <div class="post--widget pb--3 text-center">
-                    <div class="img">
-                        <a href="blog-details.html"><img src="img/widgets-img/editor-pick.jpg" alt=""></a>
-                    </div>
-
-                    <div class="cat text-white" data-overlay="0.5" data-overlay-color="primary">
-                        <p><a href="#" class="btn-link">Travel</a></p>
-                    </div>
-
-                    <div class="title">
-                        <h3 class="h5"><a href="blog-details.html" class="btn-link">Wherever You Go, I'll Be There</a>
-                        </h3>
-                    </div>
-
-                    <div class="meta">
-                        <p><i class="fa fa-clock-o text-primary"></i> 12 June 2017 <a href="#">by John Doe</a></p>
-                    </div>
-                </div>
-                <!-- Post Widget End -->
-            </div>
-            <!-- Widget End -->
-
-            <!-- Widget Start -->
-            <div class="widget">
-                <h2 class="h4 widget--title">Popular Posts</h2>
-
-                <!-- Posts Widget Start -->
-                <div class="posts--widget pb--10">
-                    <ul class="nav">
-                        <li class="clearfix">
-                            <div class="img">
-                                <a href="blog-details.html"><img src="img/widgets-img/latest-post-01.jpg" alt=""></a>
-                            </div>
-
-                            <div class="info">
-                                <a href="#" class="cat" data-overlay="0.5" data-overlay-color="primary">Travel</a>
-
-                                <h3 class="h5"><a href="blog-details.html" class="btn-link">Wherever You Go, I'll Be
-                                        There</a></h3>
-
-                                <p class="date"><i class="fa fa-clock-o text-primary"></i> <a href="#"
-                                        class="btn-link">12 June 2017</a></p>
-                            </div>
-                        </li>
-                        <li class="clearfix">
-                            <div class="img">
-                                <a href="blog-details.html"><img src="img/widgets-img/latest-post-02.jpg" alt=""></a>
-                            </div>
-
-                            <div class="info">
-                                <a href="#" class="cat" data-overlay="0.5" data-overlay-color="primary">Travel</a>
-
-                                <h3 class="h5"><a href="blog-details.html" class="btn-link">Wherever You Go, I'll Be
-                                        There</a></h3>
-
-                                <p class="date"><i class="fa fa-clock-o text-primary"></i> <a href="#"
-                                        class="btn-link">12 June 2017</a></p>
-                            </div>
-                        </li>
-                        <li class="clearfix">
-                            <div class="img">
-                                <a href="blog-details.html"><img src="img/widgets-img/latest-post-03.jpg" alt=""></a>
-                            </div>
-
-                            <div class="info">
-                                <a href="#" class="cat" data-overlay="0.5" data-overlay-color="primary">Travel</a>
-
-                                <h3 class="h5"><a href="blog-details.html" class="btn-link">Wherever You Go, I'll Be
-                                        There</a></h3>
-
-                                <p class="date"><i class="fa fa-clock-o text-primary"></i> <a href="#"
-                                        class="btn-link">12 June 2017</a></p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Posts Widget End -->
-            </div>
-            <!-- Widget End -->
-
-            <!-- Widget Start -->
-            <div class="widget">
-                <h2 class="h4 widget--title">Flicker</h2>
-
-                <!-- Flicker Widget Start -->
-                <div class="flicker--widget" data-trigger="gallery_popup">
-                    <div class="row gutter--10">
-                        <div class="col-xs-4">
-                            <a href="img/widgets-img/flicker-img-full.jpg">
-                                <img src="img/widgets-img/flicker-img-01.jpg" alt="">
-                            </a>
-                        </div>
-
-                        <div class="col-xs-4">
-                            <a href="img/widgets-img/flicker-img-full.jpg">
-                                <img src="img/widgets-img/flicker-img-02.jpg" alt="">
-                            </a>
-                        </div>
-
-                        <div class="col-xs-4">
-                            <a href="img/widgets-img/flicker-img-full.jpg">
-                                <img src="img/widgets-img/flicker-img-03.jpg" alt="">
-                            </a>
-                        </div>
-
-                        <div class="col-xs-4">
-                            <a href="img/widgets-img/flicker-img-full.jpg">
-                                <img src="img/widgets-img/flicker-img-04.jpg" alt="">
-                            </a>
-                        </div>
-
-                        <div class="col-xs-4">
-                            <a href="img/widgets-img/flicker-img-full.jpg">
-                                <img src="img/widgets-img/flicker-img-05.jpg" alt="">
-                            </a>
-                        </div>
-
-                        <div class="col-xs-4">
-                            <a href="img/widgets-img/flicker-img-full.jpg">
-                                <img src="img/widgets-img/flicker-img-06.jpg" alt="">
-                            </a>
-                        </div>
-
-                        <div class="col-xs-4">
-                            <a href="img/widgets-img/flicker-img-full.jpg">
-                                <img src="img/widgets-img/flicker-img-07.jpg" alt="">
-                            </a>
-                        </div>
-
-                        <div class="col-xs-4">
-                            <a href="img/widgets-img/flicker-img-full.jpg">
-                                <img src="img/widgets-img/flicker-img-08.jpg" alt="">
-                            </a>
-                        </div>
-
-                        <div class="col-xs-4">
-                            <a href="img/widgets-img/flicker-img-full.jpg">
-                                <img src="img/widgets-img/flicker-img-09.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Flicker Widget End -->
-            </div>
-            <!-- Widget End -->
-
-            <!-- Widget Start -->
-            <div class="widget">
-                <h2 class="h4 widget--title">Categories</h2>
-
-                <!-- Links Widget Start -->
-                <div class="links--widget pb--10">
-                    <ul class="nav">
-                        <li>
-                            <a href="#">
-                                <span class="text">Travel</span>
-                                <span class="count">5</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="text">Music</span>
-                                <span class="count">7</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="text">Foods</span>
-                                <span class="count">4</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="text">Nature</span>
-                                <span class="count">14</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="text">Beauty</span>
-                                <span class="count">6</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Links Widget End -->
-            </div>
-            <!-- Widget End -->
-
-            <!-- Widget Start -->
-            <div class="widget">
-                <h2 class="h4 widget--title">Archives</h2>
-
-                <!-- Links Widget Start -->
-                <div class="links--widget">
-                    <ul class="nav">
-                        <li>
-                            <a href="#">
-                                <span class="text">March 2017</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="text">February 2017</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="text">January 2017</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Links Widget End -->
-            </div>
-            <!-- Widget End -->
-
-            <!-- Widget Start -->
-            <div class="widget">
-                <!-- Ad Widget Start -->
-                <div class="ad--widget pb--10">
-                    <a href="#" target="_blank">
-                        <img src="img/widgets-img/ad-widget.jpg" alt="">
-                    </a>
-                </div>
-                <!-- Ad Widget End -->
-            </div>
-            <!-- Widget End -->
         </div>
     </div>
-    </div>
+    {{-- </div> --}}
 </section>
 <!-- Blog Section End -->
+@endsection
+@section('script_js')
+{{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script> --}}
+<script>
+    // alert('ok');
+    @if (Cookie::get('contact_send') == '')
+ $("#contact-form").submit(function(e) {
+        e.preventDefault(); 
+        var email = $('#email').val();
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': '{{csrf_token()}}'
+                }
+                     }),
+        $.ajax({
+        url:'{{route('Subscribe')}}',
+        type:'POST',
+        data:{email:email},
+    })
+    .done(function(data){
+        if(data.done == "Success"){
+            Swal.fire(data.done);
+        }else{
+            Swal.fire(data.error.email[0]);
+            return;
+        }
+        cache: false
+    })
+     .fail(function (xhr, status, error) {
+    Swal.fire(status);
+});
+    
+ });
+ @endif
+</script>
 @endsection

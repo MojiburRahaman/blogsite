@@ -99,6 +99,16 @@ WE MAY RELEASE FUTURE UPDATES SO IT WILL OVERWRITE THIS FILE. IT'S BETTER AND SA
     11.2. FOOTER COPYRIGHT
 
 */
+.header--logo h1 {
+    font-family: 'Parisienne', cursive;
+}
+
+.header--logo p {
+    font-family: 'Lobster', cursive;
+
+    font-family: 'Parisienne', cursive;
+    font-size: 28px;
+}
 
 /*------------------------------------*\
     1. GENERAL STYLES
@@ -125,6 +135,7 @@ img,
 .nav>li>a>img {
     /* RESPONSIVE IMAGES */
     max-width: 100%;
+    /* height: 350px; */
     height: auto;
 }
 

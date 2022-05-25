@@ -67,9 +67,33 @@ class BlogController extends Controller
             $url = public_path('projects/' . $image_extension);
             Image::make($image)->save($url, 100);
             $project->thumbnail = $image_extension;
+            
+            $img = Image::make(public_path('projects/' . $image_extension));
+            $img->resize(450, 350);
+            $img->text($request->title, 230, 250, function ($font) {
+
+                //    $font->file(public_path('fonts/Inconsolata-VariableFont_wdth,wght.ttf'));  
+                $font->file(public_path('fonts/VarelaRound-Regular.ttf'));
+                //    $font->file(public_path('fonts/Malabo-Regular.ttf'));  
+                // $font->file(public_path('path/font.ttf'));  
+
+                $font->size(12);
+
+                $font->color('#252525');
+
+                $font->align('center');
+
+                $font->valign('bottom');
+
+                //    $font->angle(90);  
+
+            });
+
+            $img->save($url, 100);
+
         }
         $project->save();
-        return redirect()->route('blog.index')->with('success','Blog Added Successfully');
+        return redirect()->route('blog.index')->with('success', 'Blog Added Successfully');
     }
 
     /**
@@ -115,7 +139,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $request->validate([
             'title' => ['required', 'unique:blogs,title,' . $id],
             'meta_description' => ['required',],
@@ -146,31 +170,31 @@ class BlogController extends Controller
             Image::make($image)->save($url, 100);
             $project->thumbnail = $image_extension;
 
-            $img = Image::make(public_path('projects/' .$image_extension));
-$img->resize(450, 350);
-            $img->text($request->title, 230, 250, function($font) {  
-     
-            //    $font->file(public_path('fonts/Inconsolata-VariableFont_wdth,wght.ttf'));  
-               $font->file(public_path('fonts/VarelaRound-Regular.ttf'));  
-            //    $font->file(public_path('fonts/Malabo-Regular.ttf'));  
-            // $font->file(public_path('path/font.ttf'));  
-     
-               $font->size(12);  
-     
-               $font->color('#252525');  
-     
-               $font->align('center');  
-     
-               $font->valign('bottom');  
-     
-            //    $font->angle(90);  
-     
-           });  
-     
+            $img = Image::make(public_path('projects/' . $image_extension));
+            $img->resize(450, 350);
+            $img->text($request->title, 230, 250, function ($font) {
+
+                //    $font->file(public_path('fonts/Inconsolata-VariableFont_wdth,wght.ttf'));  
+                $font->file(public_path('fonts/VarelaRound-Regular.ttf'));
+                //    $font->file(public_path('fonts/Malabo-Regular.ttf'));  
+                // $font->file(public_path('path/font.ttf'));  
+
+                $font->size(12);
+
+                $font->color('#252525');
+
+                $font->align('center');
+
+                $font->valign('bottom');
+
+                //    $font->angle(90);  
+
+            });
+
             $img->save($url, 100);
         }
         $project->save();
-        return redirect()->route('blog.index')->with('success','Blog Edited Successfully');
+        return redirect()->route('blog.index')->with('success', 'Blog Edited Successfully');
     }
 
     /**
