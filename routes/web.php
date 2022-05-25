@@ -24,5 +24,5 @@ Route::group(['middleware' => ['auth:sanctum', 'verified'], 'prefix' => 'admin']
     Route::resource('blog', BlogController::class);
     Route::resource('category', CategoryController::class);
     Route::post('/ckeditor/upload', [DashboardController::class, 'CkfileUpload'])->name('CkfileUpload');
-    Route::resource('setting', SettingController::class)->except('edit,store,show');
+    Route::resource('setting', SettingController::class)->except('edit,show,update');
 });

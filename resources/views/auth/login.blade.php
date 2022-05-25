@@ -47,11 +47,7 @@
                             </button>
                         </form>
 
-                        <p class="mt-4">
-                            <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline" href="{{ route('password.request') }}">
-                                {{ __('Forgot your password?') }}
-                            </a>
-                        </p>
+                      
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@
 <meta property="og:image:url" content="{{ asset('projects/' . $Blog->thumbnail) }}" />
 <meta name=”twitter:image” content="{{ asset('projects/' . $Blog->thumbnail) }}}" />
 <meta property="og:image:secure_url" content="{{ asset('projects/' . $Blog->thumbnail) }}" />
-<meta property="article:published_time" content="{{$blog->created_at}}" />
+<meta property="article:published_time" content="{{$Blog->created_at}}" />
 
 @endsection
 @section('content')

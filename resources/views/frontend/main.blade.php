@@ -20,7 +20,7 @@
                             <!-- Post Slider Start -->
                             <div class="post--img">
                                 <a href="{{route('FrontendPostView',$blog->slug )}}"><img
-                                        src="{{asset('projects/'.$blog->thumbnail)}}" alt=""></a>
+                                        src="{{asset('projects/'.$blog->thumbnail)}}" alt="{{$blog->title}}"></a>
                             </div>
                             <!-- Post Slider End -->
 
@@ -48,7 +48,7 @@
 
                                 <!-- Post Action Start -->
                                 <div class="post--action">
-                                    <a href="blog-details.html" class="btn btn-default">Read More</a>
+                                    <a href="{{route('FrontendPostView',$blog->slug )}}" class="btn btn-default">Read More</a>
                                 </div>
                                 <!-- Post Action End -->
 
@@ -85,7 +85,7 @@
                         <!-- Post Image Start -->
                         <div class="post--img">
                             <a href="{{route('FrontendPostView',$blog->slug )}}"><img
-                                    src="{{asset('projects/'.$blog->thumbnail)}}" alt=""></a>
+                                    src="{{asset('projects/'.$blog->thumbnail)}}" alt="{{$blog->title}}"></a>
                         </div>
                         <!-- Post Image End -->
 
@@ -151,22 +151,22 @@
                 <!-- About Widget Start -->
                 <div class="about--widget pb--3 text-center">
                     <div class="img">
-                        <a href="about.html">
-                            <img src="{{asset('Screenshot_২০২২০৩১৭_১৫৩৭২৩.png')}}" alt="" class="img-circle">
+                        <a href="https://mojiburrahaman.com/" target="_blank">
+                            <img src="{{asset('Screenshot_২০২২০৩১৭_১৫৩৭২৩.png')}}" alt="" class="Mojibur Rahaman">
                         </a>
                     </div>
 
                     <div class="info">
-                        <h3 class="name h5 text-primary"><a href="about.html" class="btn-link">Mojibur Rahaman</a></h3>
+                        <h3 class="name h5 text-primary"><a class="btn-link">Mojibur Rahaman</a></h3>
 
                         <p class="role">Full Stack Web Developer</p>
                     </div>
                     <br>
                     <div class="social--widget pb--5 text-center">
                         <ul class="nav">
-                            <li><a target="_blank" href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a target="_blank" href="#"><i class="fa fa-github"></i></a></li>
-                            <li><a target="_blank" href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a target="_blank"  href="https://www.facebook.com/mojibur.rahaman736/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a target="_blank"  href="https://github.com/MojiburRahaman"><i class="fa fa-github"></i></a></li>
+                            <li><a target="_blank" href="https://www.linkedin.com/in/mojibur-rahaman"><i class="fa fa-linkedin"></i></a></li>
                         </ul>
                     </div>
 

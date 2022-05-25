@@ -31,6 +31,8 @@
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
+        {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> --}}
+        <link rel="stylesheet" href="{{asset('highlight/monokai-sublime.min.css')}}">
 
         @livewireStyles
         <script>
@@ -39,6 +41,7 @@
         </script>
 
         <!-- Scripts -->
+        {{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script> --}}
     </head>
 
     <body>
@@ -60,6 +63,10 @@
             <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
             <script src="{{asset('summernote-lite.min.js')}}"></script>
+            <script src="{{asset('highlight/highlight.min.js')}}"></script>
+            <script>
+                hljs.highlightAll();
+            </script>
 
         </div>
     </body>
