@@ -11,7 +11,7 @@
 <section class="section post_all">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                 <div class="row" data-trigger="fitrow">
                     @foreach ($blogs as $blog)
                     @if ($loop->index+1 < 3) <div class="col-sm-6 col-lg-6 col-sm-6 col-xs-12 pb--60">
@@ -48,7 +48,8 @@
 
                                 <!-- Post Action Start -->
                                 <div class="post--action">
-                                    <a href="{{route('FrontendPostView',$blog->slug )}}" class="btn btn-default">Read More</a>
+                                    <a href="{{route('FrontendPostView',$blog->slug )}}" class="btn btn-default">Read
+                                        More</a>
                                 </div>
                                 <!-- Post Action End -->
 
@@ -57,8 +58,6 @@
                                     <p class="float--left">
                                         <i class="fa fa-clock-o text-primary"></i>
                                         <span>{{$blog->created_at->format('d M Y')}}</span>
-                                        <span>by <a href="https://mojiburrahaman.com/" target="_blank"
-                                                title="Mojibur Rahaman"> Mojibur Rahaman</a></span>
                                     </p>
 
                                     <p class="float--right">
@@ -75,11 +74,11 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-md-9 col-lg-9 col-xs-12">
-            <div class="row" data-trigger="fitrow">
+        <div class="row">
+            <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
                 @foreach ($blogs as $blog)
                 @if ($loop->index+1 > 2)
-                <div class="col-sm-6 col-xs-12 pb--60">
+                <div class="col-sm-6 col-lg-6 col-md-6 col-xs-12 pb--60">
                     <!-- Post Item Start -->
                     <div class="post--item   text-center">
                         <!-- Post Image Start -->
@@ -123,8 +122,6 @@
                                 <p class="float--left">
                                     <i class="fa fa-clock-o text-primary"></i>
                                     <span>{{$blog->created_at->format('d M Y')}}</span>
-                                    <span>by <a href="https://mojiburrahaman.com/" target="_blank"
-                                            title="Mojibur Rahaman"> Mojibur Rahaman</a></span>
                                 </p>
 
                                 <p class="float--right">
@@ -139,75 +136,79 @@
                 </div>
                 @endif
                 @endforeach
+
+                <!-- Pager End -->
             </div>
-            <!-- Pager End -->
-        </div>
 
-        <div class="col-md-3 pb--60">
-            <!-- Widget Start -->
-            <div class="widget">
-                <h2 class="h4 widget--title">About Me</h2>
+            <div class="col-md-3 col-xs-12 col-lg-3 col-sm-12 pb--60">
+                <!-- Widget Start -->
+                <div class="widget">
+                    <h2 class="h4 widget--title">About Me</h2>
 
-                <!-- About Widget Start -->
-                <div class="about--widget pb--3 text-center">
-                    <div class="img">
-                        <a href="https://mojiburrahaman.com/" target="_blank">
-                            <img src="{{asset('Screenshot_২০২২০৩১৭_১৫৩৭২৩.png')}}" alt="" class="Mojibur Rahaman">
-                        </a>
+                    <!-- About Widget Start -->
+                    <div class="about--widget pb--3 text-center">
+                        <div class="img">
+                            <a href="https://mojiburrahaman.com/" target="_blank">
+                                <img src="{{asset('Screenshot_২০২২০৩১৭_১৫৩৭২৩.png')}}" alt="Mojibur Rahaman"
+                                    class="img-circle">
+                            </a>
+                        </div>
+
+                        <div class="info">
+                            <h3 class="name h5 text-primary"><a class="btn-link">Mojibur Rahaman</a></h3>
+
+                            <p class="role">Full Stack Web Developer</p>
+                        </div>
+                        <br>
+                        <div class="social--widget pb--5 text-center">
+                            <ul class="nav">
+                                <li><a target="_blank" href="https://www.facebook.com/mojibur.rahaman736/"><i
+                                            class="fa fa-facebook"></i></a></li>
+                                <li><a target="_blank" href="https://github.com/MojiburRahaman"><i
+                                            class="fa fa-github"></i></a></li>
+                                <li><a target="_blank" href="https://www.linkedin.com/in/mojibur-rahaman"><i
+                                            class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="bio">
+                            <p>I'm a full-stack web developer, proficient at building responsive web applications,
+                                mostly
+                                experienced in php and Laravel framework . .</p>
+
+                            <p><a target="_blank" href="https://mojiburrahaman.com/#contact">Contact Me</a></p>
+                        </div>
                     </div>
-
-                    <div class="info">
-                        <h3 class="name h5 text-primary"><a class="btn-link">Mojibur Rahaman</a></h3>
-
-                        <p class="role">Full Stack Web Developer</p>
-                    </div>
-                    <br>
-                    <div class="social--widget pb--5 text-center">
-                        <ul class="nav">
-                            <li><a target="_blank"  href="https://www.facebook.com/mojibur.rahaman736/"><i class="fa fa-facebook"></i></a></li>
-                            <li><a target="_blank"  href="https://github.com/MojiburRahaman"><i class="fa fa-github"></i></a></li>
-                            <li><a target="_blank" href="https://www.linkedin.com/in/mojibur-rahaman"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-
-                    <div class="bio">
-                        <p>I'm a full-stack web developer, proficient at building responsive web applications, mostly
-                            experienced in php and Laravel framework . .</p>
-
-                        <p><a target="_blank" href="https://mojiburrahaman.com/#contact">Contact Me</a></p>
-                    </div>
+                    <!-- About Widget End -->
                 </div>
-                <!-- About Widget End -->
-            </div>
-            <!-- Widget End -->
+                <!-- Widget End -->
 
-            <!-- Widget Start -->
-            <div class="widget">
-                <h2 class="h4 widget--title">Newsletter</h2>
+                <!-- Widget Start -->
+                <div class="widget">
+                    <h2 class="h4 widget--title">Newsletter</h2>
 
-                <!-- Newsletter Widget Start -->
-                <div class="newsletter--widget pb--10 text-center">
-                    <form id="contact-form" name="mc-embedded-subscribe-form" target="_blank">
+                    <!-- Newsletter Widget Start -->
+                    <div class="newsletter--widget pb--10 text-center">
+                        <form id="contact-form" name="mc-embedded-subscribe-form" target="_blank">
 
-                        <input type="email" name="EMAIL" placeholder="Your E-mail" class="form-control" id="email"
-                            value="{{old('EMAIL')}}" autocomplete="off" required>
+                            <input type="email" name="EMAIL" placeholder="Your E-mail" class="form-control" id="email"
+                                value="{{old('EMAIL')}}" autocomplete="off" required>
 
-                        <button type="submit" class="btn btn-default">Subscribe Now</button>
-                    </form>
+                            <button type="submit" class="btn btn-default">Subscribe Now</button>
+                        </form>
+                    </div>
+                    <!-- Newsletter Widget End -->
                 </div>
-                <!-- Newsletter Widget End -->
+                <!-- Widget End -->
             </div>
-            <!-- Widget End -->
         </div>
     </div>
-    {{-- </div> --}}
+
 </section>
 <!-- Blog Section End -->
 @endsection
 @section('script_js')
-{{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script> --}}
 <script>
-    // alert('ok');
     @if (Cookie::get('contact_send') == '')
  $("#contact-form").submit(function(e) {
         e.preventDefault(); 

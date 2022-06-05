@@ -1,3 +1,7 @@
+pre code.hljs {
+    white-space: pre;
+}
+
 .related_post_text {
     font-size: 15px;
 }
@@ -76,6 +80,10 @@
     margin-bottom: 15px;
 }
 
+.mt-4 {
+    margin-top: 6px;
+}
+
 .card_footer {
     padding: 7px;
     border-top: 1px solid;
@@ -91,6 +99,7 @@
     padding: 5px;
     background-color: rgba(0, 0, 0, .03);
     border: 1px solid rgba(0, 0, 0, .125);
+    height: 330px;
 }
 
 .blog-card {
@@ -319,5 +328,12 @@
         -webkit-transition-timing-function: ease-in-out;
         transition-timing-function: ease-in-out;
         text-transform: uppercase;
+    }
+
+    .blog_content {
+        padding: 5px;
+        background-color: rgba(0, 0, 0, .03);
+        border: 1px solid rgba(0, 0, 0, .125);
+        height: auto;
     }
 }

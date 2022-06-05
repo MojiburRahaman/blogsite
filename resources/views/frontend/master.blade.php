@@ -212,7 +212,7 @@
         <script src="{{asset('front/js/jquery.validate.min.js')}}"></script>
 
         <!-- ==== Match Height Plugin ==== -->
-        <script src="{{asset(' front/js/jquery.matchHeight-min.js')}}"></script>
+        {{-- <script src="{{asset('front/js/jquery.matchHeight-min.js')}}"></script> --}}
 
         <!-- ==== Isotope Plugin ==== -->
         <script src="{{asset('front/js/isotope.min.js')}}"></script>
@@ -221,13 +221,13 @@
         <script src="{{asset('front/js/footer-reveal.min.js')}}"></script>
 
         <!-- ==== Retina Plugin ==== -->
-        <script src="{{asset('front/js/retina.min.js')}}"></script>
+        {{-- <script src="{{asset('front/js/retina.min.js')}}"></script> --}}
 
         <!-- ==== Main Script ==== -->
         <script src="{{asset('front/js/main.js')}}"></script>
-        <script src="{{asset('highlight/highlight.min.js')}}"></script>
+        <script src="{{asset('highlight/highlight.min.js')}}" defer></script>
 
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
         @yield('script_js')
 
 

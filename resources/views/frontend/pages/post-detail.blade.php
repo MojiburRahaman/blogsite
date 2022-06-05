@@ -17,7 +17,7 @@
 <section class="section  post_all">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 pb--60">
+            <div class="col-md-8 pb--60 col-xs-12 col-sm-12 -col-lg-8">
                 <!-- Post Item Start -->
                 <div class="post--item post--single text-center">
 
@@ -26,7 +26,7 @@
                         <p class="float--left">
                             <i class="fa fa-clock-o text-primary"></i>
                             <span>{{$Blog->created_at->format('d M Y')}}</span>
-                            <a href="author.html">by John Doe</a>
+                            <a target="_blank" href="https://mojiburrahaman.com/">by Mojibur Rahaman</a>
                         </p>
 
                         <p class="float--right">
@@ -62,8 +62,12 @@
                         <ul class="post--social nav float--right">
                             <li><strong>Share On:</strong></li>
                             <li>
-                                <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}&display=popup"
+                                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}&display=popup"
                                     title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a target="_blank"  href="https://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}&title={{$Blog->title}}"
+                                    title="Share on Linkedin"><i class="fa fa-linkedin"></i></a>
                             </li>
                         </ul>
                         <!-- Post Social End -->
@@ -73,13 +77,12 @@
                 <!-- Post Item End -->
             </div>
 
-            <div class="col-lg-4 col-sm-4 col-xs-12">
+            <div class="col-lg-4 col-sm-12 col-md-12 col-xs-12">
                 <div class="sidebar">
                     <div class="heading">
                         <h4 class="card-header">Related Post</h4>
                     </div>
                     <div class="sidebar_content">
-                        {{-- <ul> --}}
 
                         @foreach ($Blog->Category->Blog as $blog)
                         @if ($blog->id != $Blog->id)
@@ -108,5 +111,10 @@
 @section('script_js')
 <script>
     hljs.highlightAll();
+</script>
+<script>
+    window.addEventListener('visibilitychange',function(){
+        location.reload(); 
+    },false)
 </script>
 @endsection

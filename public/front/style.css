@@ -247,7 +247,7 @@ h6,
 }
 
 /* 1.2. BLOCKQUOTES */
-blockquote {
+/* blockquote {
     position: relative;
     margin-top: 57px;
     padding: 50px 50px 54px;
@@ -295,7 +295,7 @@ blockquote:after {
     background-color: #45c6a6;
     border-radius: 50%;
     z-index: -2;
-}
+} */
 
 blockquote p:before {
     content: "\f10d";

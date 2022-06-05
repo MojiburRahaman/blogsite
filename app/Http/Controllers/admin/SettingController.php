@@ -55,7 +55,7 @@ class SettingController extends Controller
         $profile->meta_keyword = $request->meta_keyword;
         if ($request->hasFile('logo')) {
             $skill_logo = $request->file('logo');
-            $extension = Str::slug($request->name) .  '.' . 'webp';
+            $extension = Str::slug($request->name) .  '.' .  $skill_logo->getClientOriginalExtension();;
             Image::make($skill_logo)->save(public_path('logo/' . $extension), 100);
             $profile->logo  = $extension;
         }
@@ -108,7 +108,8 @@ class SettingController extends Controller
         $setting->meta_keyword = $request->meta_keyword;
         if ($request->hasFile('logo')) {
             $skill_logo = $request->file('logo');
-            $extension = Str::slug($request->name) .  '.' . 'webp';
+            // $extension = Str::slug($request->name) .  '.' . 'webp';
+            $extension = Str::slug($request->name) .  '.' .  $skill_logo->getClientOriginalExtension();;
             Image::make($skill_logo)->save(public_path('logo/' . $extension), 100);
             $setting->logo  = $extension;
         }

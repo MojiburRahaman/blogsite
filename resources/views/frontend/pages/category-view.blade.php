@@ -7,16 +7,12 @@
 <section class="section post_all">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-lg-8 col-xs-12 ">
+            <div class="col-md-8 col-lg-8 col-xs-12 col-sm-12">
                 <!-- Post Item Start -->
                 <div>
                     <h1 class="mg-b-0 tx-bold tx-spacing--1"> {{$title}}'s Articles :</h1>
-
                 </div>
-                <h2>
-
-                </h2>
-                @foreach ($posts as $post)
+                @forelse ($posts as $post)
 
                 <article class="blog-card">
                     <a href="{{route('FrontendPostView',$post->slug)}}">
@@ -47,18 +43,21 @@
 
                         </span>
                         <div class="article-footer">
-                            <span class="post-author"> <i class="fa fa-user"></i> &nbsp;<a href="">Mojibur
+                            <span class="post-author"> <i class="fa fa-user"></i> &nbsp;<a
+                                    href="https://mojiburrahaman.com/">Mojibur
                                     Rahaman</a></span>
 
-                            {{-- <div class="extra-footer"> --}}
                             <a class="btn read_more_btn" href="{{route('FrontendPostView',$post->slug)}}">
                                 Read More
                             </a>
-                            {{-- </div> --}}
                         </div>
                     </div>
                 </article>
-                @endforeach
+                @empty
+                <article>
+                    <span>No article</span>
+                </article>
+                @endforelse
                 <div class="mt-2">
                     {{$posts->links('frontend.paginator')}}
                 </div>
@@ -75,7 +74,7 @@
 
 
             <!-- Post Author Start -->
-            <div class="col-md-4">
+            <div class="mt-2 col-md-12 col-xs-12 col-sm-12 col-lg-4">
 
                 <div class="sidebar">
 
